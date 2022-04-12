@@ -14,9 +14,5 @@ class Taxa
             return $valor + ($valor * 0.01);
         }
     }
-    public function pagamentoCartaoDeCredito($valor)
-    {
-        return $valor + ($valor * 0.0763) ;
-    }
     
 }

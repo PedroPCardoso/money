@@ -17,5 +17,8 @@ class Money extends Model
     // CONST BRLEUR = 'EUR-BRL';
     // CONST BRLGBP = 'GBP-BRL';
 
-
+    public static $rules = [
+        'moeda' => 'required',
+        'valor' => 'required'
+    ];
 }

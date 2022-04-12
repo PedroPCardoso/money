@@ -4,20 +4,23 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use Sammyjo20\Saloon\Http\SaloonConnector;
 
-class MoneyController extends Controller
+use App\Http\Services\MoneyService;
+class MoneyController extends BaseController
 {
     public function index()
     {
-        return view('money.index');
+
     }
     public function store()
     {
-        $money = new Money();
-        $money->name = request('name');
-        $money->value = request('value');
-        $money->save();
-        return redirect('/money');
+
+    }
+    public function convert(Request $request)
+    {
+        $service = new MoneyService();
+        $valorConvertido = $service->conversorDeMoeda($request->moeda, $request->valor);
+        return sendResponse($valorConvertido);
+    
     }
 }
