@@ -18,9 +18,10 @@ class MoneyController extends BaseController
     }
     public function convert(Request $request)
     {
+
         $service = new MoneyService();
-        $valorConvertido = $service->conversorDeMoeda($request->moeda, $request->valor);
-        return sendResponse($valorConvertido);
+        $data = $service->conversorDeMoeda($request->moeda, $request->valor,$request->formaDePagamento);
+        return $this->sendResponse($data,"Sucesso");
     
     }
 }
