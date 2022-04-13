@@ -7,7 +7,7 @@ use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;
 
 class CotacoesConnector extends SaloonConnector
 {
-    CONST URL = 'https://economia.awesomeapi.com.br/json/last/';
+    CONST URL = 'https://economia.awesomeapi.com.br/json/last';
     use AcceptsJson;
 
     /**
@@ -25,7 +25,7 @@ class CotacoesConnector extends SaloonConnector
      */
     public function defineBaseUrl(): string
     {
-        return 'http://economia.awesomeapi.com.br/json/last/USD-BRL';
+        return 'http://economia.awesomeapi.com.br/json/last';
     }
 
     /**

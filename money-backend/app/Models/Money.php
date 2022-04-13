@@ -10,12 +10,9 @@ class Money extends Model
     use HasFactory;
 
     CONST COTACOES = [
-        'USD-BRL',
-        'EUR-BRL',
-        'GBP-BRL'];
-    // CONST BRLUSD = 'USD-BRL';
-    // CONST BRLEUR = 'EUR-BRL';
-    // CONST BRLGBP = 'GBP-BRL';
+        'USD'=>'USD-BRL',
+        'EUR'=>'EUR-BRL',
+        'GBP'=>'GBP-BRL'];
 
     public static $rules = [
         'moeda' => 'required',

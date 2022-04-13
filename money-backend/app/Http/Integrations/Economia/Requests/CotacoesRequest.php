@@ -21,7 +21,10 @@ class CotacoesRequest extends SaloonRequest
      * @var string|null
      */
     protected ?string $connector = CotacoesConnector::class;
-
+    
+    public function __construct(
+        public string $parDeMoedas
+    ){}
     /**
      * Define the endpoint for the request.
      *
@@ -29,6 +32,6 @@ class CotacoesRequest extends SaloonRequest
      */
     public function defineEndpoint(): string
     {
-        return '/';
+        return '/'. $this->parDeMoedas;
     }
 }
