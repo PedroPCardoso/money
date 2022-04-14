@@ -21,7 +21,7 @@
             </select>
             <br>
             <br>
-            <label>Digite o valor que deseja converter</label>
+            <label>Digite o valor que deseja converter em Reais</label>
             <input  v-model="valor" number ></input>
             <button v-on:click="enviar()" >Cotar</button>
         </div>
@@ -110,32 +110,32 @@ var app = new Vue({
 
     enviar(){
 
+            fetch("http://localhost:8000/api/convert", {
+            
+            // Adding method type
+            method: "POST",
+            
+            // Adding body or contents to send
+            body: JSON.stringify({
+                moeda: this.moeda,
+                formaDePagamento:this.formaDePagamento,
+                valor: this.valor
+            }),
+            
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+                }
+            })// Converting to JSON
+            .then(response => response.json())
+            
+            // Displaying results to console
+            .then(json => {
+        
+                this.resultado = json.data
+                console.log(json)
+            });
         // return true;
-        fetch("http://localhost:8000/api/convert", {
-        
-        // Adding method type
-        method: "POST",
-        
-        // Adding body or contents to send
-        body: JSON.stringify({
-            moeda: this.moeda,
-            formaDePagamento:this.formaDePagamento,
-            valor: this.valor
-        }),
-        
-        // Adding headers to the request
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-            }
-        })// Converting to JSON
-        .then(response => response.json())
-        
-        // Displaying results to console
-        .then(json => {
-
-            this.resultado = json.data
-            console.log(json)
-        });
     }
 
   }
