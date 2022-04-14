@@ -24,7 +24,7 @@ class MoneyController extends BaseController
             return $this->sendResponse($data,"Sucesso");
         }
         else{
-            return $this->sendResponse("Erro - Valor deve ser entre 1000 e 100000",406);
+            return $this->sendError("Erro - Valor deve ser entre 1000 e 100000",406);
 
         }
     

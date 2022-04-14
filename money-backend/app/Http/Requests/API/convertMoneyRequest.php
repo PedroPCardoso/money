@@ -27,17 +27,6 @@ class convertMoneyRequest extends FormRequest
         return Money::$rules;
     }
 
-    /**
-     * Get custom messages for validator errors.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return Money::$messages;
-    }
-
-
 
 
 }
