@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 
 use App\Http\Services\MoneyService;
+use App\Http\Requests\API\convertMoneyRequest;
 class MoneyController extends BaseController
 {
     public function index()
@@ -16,11 +16,17 @@ class MoneyController extends BaseController
     {
 
     }
-    public function convert(Request $request)
+    public function convert(convertMoneyRequest $request)
     {
-        $service = new MoneyService();
-        $valorConvertido = $service->conversorDeMoeda($request->moeda, $request->valor);
-        return sendResponse($valorConvertido);
+        if(1000<=$request->valor && $request->valor < 100000){
+            $service = new MoneyService();
+            $data = $service->conversorDeMoeda($request->moeda, $request->valor,$request->formaDePagamento);
+            return $this->sendResponse($data,"Sucesso");
+        }
+        else{
+            return $this->sendResponse("Erro - Valor deve ser entre 1000 e 100000",406);
+
+        }
     
     }
 }

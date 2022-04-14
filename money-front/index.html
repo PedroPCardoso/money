@@ -1,0 +1,146 @@
+<html>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+
+    <div class="container center ">
+        <div >
+    
+            <label>Escolha um par de moedas</label>
+            <select v-model="moeda">
+              <option value="USD" selected>USD</option>
+              <option value="EUR" >EUR</option>
+              <option value="GBP">GBP</option>
+            </select>
+            <br>
+            <br>
+            <label>Escolha a forma de pagamento</label>
+            <select v-model="formaDePagamento" >
+              <option value="1"selected>Boleto</option>
+              <option value="2" >Cartão de Crédito</option>
+            </select>
+            <br>
+            <br>
+            <label>Digite o valor que deseja converter em Reais</label>
+            <input  v-model="valor" number ></input>
+            <button v-on:click="enviar()" >Cotar</button>
+        </div>
+        <div v-if="resultado">
+            <br>
+            <h4>
+                Moeda de origem: {{resultado.moedaDeOrigem}}
+            </h4>
+            <br>
+
+            <br>
+            <h4>
+                Moeda de destino: {{resultado.moedaDeDestino}}
+            </h4>
+            <br>
+
+            <br>
+            <h4>
+                Valor para conversão: R$  {{resultado.valorParaConversao}}
+            </h4>
+            <br>
+            
+            <br>
+            <h4>
+                Forma de pagamento: {{resultado.meioDePagamento}}
+            </h4>
+            <br>
+
+            <br>
+            <h4>
+                Valor da "Moeda de destino" usado para conversão: $ {{resultado.cotacaoAtualDaMoeda}} 
+            </h4>
+            <br>
+
+            <br>
+            <h4>
+                Valor comprado em "Moeda de destino": $ {{resultado.valorCompradoDaMoeda}} (taxas aplicadas no valor de compra diminuindo no valor total de conversão)
+            </h4>
+            <br>
+
+            <br>
+            <h4>
+                Taxa de pagamento: R$ {{resultado.valorDaTaxaDeMeioDePagamento}} 
+            </h4>
+            <br>
+
+            <br>
+            <h4>
+                Taxa de conversão: R$ {{resultado.valorDaTaxaDeConversao}} 
+            </h4>
+            <br>
+            
+            <br>
+            <h4>
+                Valor utilizado para conversão descontando as taxas: R$ {{resultado.valorDescontado}} 
+            </h4>
+            <br>
+        </div>
+        
+    </div>
+
+
+</div>
+
+
+<style>
+
+.center {
+display: flex;
+justify-content: center;
+}
+
+</style>
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: '',
+    moeda:'',
+    formaDePagamento:'',
+    valor:'',
+    resultado:null
+  },
+  methods:{
+
+    enviar(){
+
+            fetch("http://localhost:8000/api/convert", {
+            
+            // Adding method type
+            method: "POST",
+            
+            // Adding body or contents to send
+            body: JSON.stringify({
+                moeda: this.moeda,
+                formaDePagamento:this.formaDePagamento,
+                valor: this.valor
+            }),
+            
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+                }
+            })// Converting to JSON
+            .then(response => response.json())
+            
+            // Displaying results to console
+            .then(json => {
+        
+                this.resultado = json.data
+                console.log(json)
+            });
+        // return true;
+    }
+
+  }
+
+})
+
+</script>
+</html>
