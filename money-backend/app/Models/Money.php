@@ -19,6 +19,9 @@ class Money extends Model
 
     public static $rules = [
         'moeda' => 'required',
-        'valor' => 'required'
+        'valor' => 'required',
+        'formaDePagamento' => 'required'
     ];
+
+
 }
