@@ -38,8 +38,9 @@ class MoneyService {
     public function getCotacaoDasMoedas($parDeMoedas){
         
         $request = new CotacoesRequest(parDeMoedas: Money::COTACOES[$parDeMoedas]);
-        $cotacao= $request->send()->json()[$parDeMoedas]["low"];
+        $cotacao= current($request->send()->json())["bid"];
         return $cotacao;
-    }
+        }
+    
 
 }

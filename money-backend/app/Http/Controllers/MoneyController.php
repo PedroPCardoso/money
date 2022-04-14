@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Services\MoneyService;
+use App\Http\Requests\API\convertMoneyRequest;
 class MoneyController extends BaseController
 {
     public function index()
@@ -16,7 +17,7 @@ class MoneyController extends BaseController
     {
 
     }
-    public function convert(Request $request)
+    public function convert(convertMoneyRequest $request)
     {
 
         $service = new MoneyService();
