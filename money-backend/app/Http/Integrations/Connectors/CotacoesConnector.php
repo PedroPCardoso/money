@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Integrations\economia;
+namespace App\Http\Integrations\Connectors;
 
 use Sammyjo20\Saloon\Http\SaloonConnector;
 use Sammyjo20\Saloon\Traits\Plugins\AcceptsJson;
 
-class nome:economia extends SaloonConnector
+class CotacoesConnector extends SaloonConnector
 {
+    CONST URL = 'https://economia.awesomeapi.com.br/json/last';
     use AcceptsJson;
 
     /**
@@ -15,7 +16,7 @@ class nome:economia extends SaloonConnector
      *
      * @var array
      */
-    protected array $requests = [];
+    // protected array $requ'ests = [];
 
     /**
      * Define the base url of the api.
@@ -24,7 +25,7 @@ class nome:economia extends SaloonConnector
      */
     public function defineBaseUrl(): string
     {
-        return '';
+        return 'http://economia.awesomeapi.com.br/json/last';
     }
 
     /**
