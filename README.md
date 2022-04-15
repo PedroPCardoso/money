@@ -2,7 +2,7 @@
 ## Money Conversor
 
 MoneyConversor é uma API de conversão de valores em R$ para moedas estrangeiras, onde são descontados os valores de taxa de conversão e de meio de pagamento e retornado quanto seria o real valor comprado da moeda escolhida.
-## Tecnologias a serem utilizadas
+## Tecnologias que foram utilizadas
 * HTML
 * Vue
 * Javascript
