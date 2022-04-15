@@ -15,3 +15,10 @@ São retornadas toda a informação da conversão como valores de taxas que fora
 
 
 Sobre a estrutura do código, foram utilizados alguns conceitos do framework, utilizados Helpers e validations para melhor entendendimento do código, e modularização do mesmo. Sempre também utilizados constantes para não haver números mágicos surgindo código e também utilizamos o sallon para integrar com uma api de terceiros onde consultamos os dados dos pares de moedas que necessitamos.
+
+
+Link: https://www.loom.com/share/22604847725c4fc589e64dc9789e2357
+
+
+by João Pedro Cardoso
+https://www.linkedin.com/in/eupedrocardoso/
